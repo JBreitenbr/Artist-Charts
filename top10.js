@@ -1,11 +1,11 @@
-function showMonth(month){
+function showMonth(period){
 d3.select("#spotify-list").remove();
   let container = d3.select("body")
     .append("div")
     .attr("id","spotify-list");
 //let container = d3.select("#spotify-list");
 const tooltip = d3.select("#tooltip");
-d3.json(`https://raw.githubusercontent.com/JBreitenbr/beautiful-skunk/refs/heads/main/${month}/artsy.json`).then(data => {
+d3.json(`https://raw.githubusercontent.com/JBreitenbr/beautiful-skunk/refs/heads/main/${period.split(" ")[1]}/${period.split(" ")[0]}/artsy.json`).then(data => {
     const items = container.selectAll(".artist-item")
       .data(data)
       .enter()
@@ -39,10 +39,10 @@ tooltip.transition()
       .text(d => d.genres);});
   }
 
-showMonth("May");
+showMonth("May 2026");
 d3.select("#selectButton")
       .selectAll('myOptions')
-     	.data(['May','June',"July"])
+     	.data(['May 2026','June 2026',"July 2026"])
       .enter()
     	.append('option')
       .text(function (d) { return d; }) 
