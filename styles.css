@@ -65,3 +65,8 @@ span {
     .artist-name { font-weight: bold; font-size: 15px; font-family:"Montserrat";}
     .genres-name { color: #555; font-size: 12px; }
   
+@media (min-width: 768px) {
+  #spotify-list {
+  grid-template-columns: 1fr 1fr;
+  }
+}
