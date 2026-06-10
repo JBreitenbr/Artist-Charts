@@ -5,7 +5,7 @@ d3.select("#spotify-list").remove();
     .attr("id","spotify-list");
 //let container = d3.select("#spotify-list");
 const tooltip = d3.select("#tooltip");
-d3.json(`https://raw.githubusercontent.com/JBreitenbr/beautiful-skunk/refs/heads/main/${period.split(" ")[1]}/${period.split(" ")[0]}/artsy.json`).then(data => {
+d3.json(`https://raw.githubusercontent.com/JBreitenbr/beautiful-skunk/refs/heads/main/${period.split(" ")[1]}/${period.split(" ")[0]}/artists_top_10.json`).then(data => {
     const items = container.selectAll(".artist-item")
       .data(data)
       .enter()
@@ -17,7 +17,7 @@ items.append("img")
 tooltip.transition()
 .duration(200)
 .style("opacity", 0.9);
-  tooltip.html(`Artist: ${d.artist}<br/>Score: ${d.artist_score}<br/>Unique songs played: ${d.art_unique_tracks}<br/>Played on: ${d.art_unique_days} days<br/>Minutes played: ${d.sum_dur_min}<br/>Longest streak: ${d.streak} days <br/>Top day: ${d.top_day}`)
+  tooltip.html(`Artist: ${d.artist}<br/>Score: ${d.artist_score}<br/>Number of songs played: ${d.art_all_tracks}<br/> Unique songs played: ${d.art_unique_tracks}<br/>Played on: ${d.art_unique_days} days<br/>Minutes played: ${d.sum_dur_min}<br/>Longest streak: ${d.streak} days <br/>Top day: ${d.top_day}`)
 .style("left", (event.pageX + 10) + "px")
 .style("top", (event.pageY - 28) + "px");
 }).on("mouseout", (d) => {
